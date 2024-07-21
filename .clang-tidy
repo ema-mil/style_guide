@@ -1,8 +1,6 @@
-# clang-format-template
-
 # source: 
 # - https://github.com/ema-mil/style_guide
-
+#
 # resources:
 # - https://clang.llvm.org/extra/clang-tidy/
 # - https://clang.llvm.org/extra/clang-tidy/checks/list.html
