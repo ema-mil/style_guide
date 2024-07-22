@@ -55,7 +55,6 @@ CheckOptions:
   readability-identifier-naming.ClassCase: 'lower_case'
   readability-identifier-naming.ClassConstantCase: 'lower_case'
   readability-identifier-naming.ClassMemberCase: 'lower_case'
-  readability-identifier-naming.ClassMemberCase: 'lower_case'
   readability-identifier-naming.ClassMethodCase: 'lower_case'
   readability-identifier-naming.ConceptCase: 'lower_case'
   readability-identifier-naming.ConstantCase: 'lower_case'
