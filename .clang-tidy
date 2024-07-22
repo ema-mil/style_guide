@@ -51,13 +51,11 @@ CheckOptions:
   cppcoreguidelines-pro-type-const-cast.StrictMode: true
   modernize-use-default-member-init.UseAssignment: true
   performance-for-range-copy.WarnOnAllAutoCopies: true
-  readability-function-cognitive-complexity.Threshold: 25
   readability-identifier-naming.AbstractClassCase: 'lower_case'
   readability-identifier-naming.ClassCase: 'lower_case'
   readability-identifier-naming.ClassConstantCase: 'lower_case'
   readability-identifier-naming.ClassMemberCase: 'lower_case'
   readability-identifier-naming.ClassMemberCase: 'lower_case'
-  readability-identifier-naming.ClassMemberPrefix: 'm_'
   readability-identifier-naming.ClassMethodCase: 'lower_case'
   readability-identifier-naming.ConceptCase: 'lower_case'
   readability-identifier-naming.ConstantCase: 'lower_case'
@@ -82,7 +80,6 @@ CheckOptions:
   readability-identifier-naming.LocalVariableCase: 'lower_case'
   readability-identifier-naming.MacroDefinitionCase: 'UPPER_CASE'
   readability-identifier-naming.MemberCase: 'lower_case'
-  readability-identifier-naming.MemberHungarianPrefix: 'm_'
   readability-identifier-naming.MethodCase: 'lower_case'
   readability-identifier-naming.NamespaceCase: 'lower_case'
   readability-identifier-naming.ParameterCase: 'lower_case'
