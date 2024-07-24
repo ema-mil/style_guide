@@ -45,7 +45,9 @@ Checks: "clang-diagnostic-*,
          -objc-*,
          -openmp-exception-escape,
          -openmp-use-default-none,
-         -portability-restrict-system-includes
+         -portability-restrict-system-includes,
+         -llvmlibc-callee-namespace,
+         -llvmlibc-implementation-in-namespace
          "
 CheckOptions:
   cppcoreguidelines-pro-type-const-cast.StrictMode: true
