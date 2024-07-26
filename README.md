@@ -29,10 +29,10 @@ You should format with `clang-format` and `clang-tidy`.
 
 Don't align anything except the following:
 
- - If something doesn't fit into a single line use BlockIndent style:
-
+ - If arguments/parameters doesn't fit in a line,
+   break after open brackets and place the closing bracket to a new line.
+ 
  ```cpp
- // BlockIndent style in function declaration
  void int foo(
      unsigned int value_one,
      unsigned int value_two,
@@ -42,7 +42,6 @@ Don't align anything except the following:
     // Code...
  }
  
- // BlockIndent style in function arguments
  foo(
      value_one,
      value_two,
