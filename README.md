@@ -203,7 +203,7 @@ Defines types are types defined with:
 
 Raccomented best practices:
 
-[Jason Turner Best Practices](#https://github.com/cpp-best-practices/cppbestpractices)
+[Jason Turner Best Practices](https://github.com/cpp-best-practices/cppbestpractices)
 
-[C++ Core Guidelines](#https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines)
+[C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines)
 
