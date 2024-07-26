@@ -1,3 +1,5 @@
+[//]: # (source: https://github.com/ema-mil/style_guide)
+
 # Style Guide
 
 You should format with `clang-format` and `clang-tidy`.
@@ -172,7 +174,7 @@ Never put everything into a single line except:
 
 ### Spaces 
 
-Put a space after a `for`, `if`, `else if`, `while` and in C style casts.
+Put a space after a `for`, `if`, `else if`, `while` and after C style casts.
 
 ### Templates
 
