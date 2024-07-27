@@ -35,10 +35,12 @@ Checks: "clang-diagnostic-*,
          -fuchsia-statically-constructed-objects,
          -google-objc-*,
          -google-readability-todo,
+         -google-readability-namespace-comments,
          -hicpp-multiway-paths-covered,
          -hicpp-no-assembler,
          -llvmlibc-inline-function-decl,
          -llvmlibc-restrict-system-libc-headers,
+         -misc-non-private-member-variables-in-classes,
          -modernize-use-auto,
          -modernize-use-nodiscard,
          -modernize-use-trailing-return-type,
@@ -47,7 +49,11 @@ Checks: "clang-diagnostic-*,
          -openmp-use-default-none,
          -portability-restrict-system-includes,
          -llvmlibc-callee-namespace,
-         -llvmlibc-implementation-in-namespace
+         -llvmlibc-implementation-in-namespace,
+         -llvm-header-guard,
+         -readability-identifier-length,
+         -readability-magic-numbers,
+         -readability-uppercase-literal-suffix
          "
 CheckOptions:
   cppcoreguidelines-pro-type-const-cast.StrictMode: true
