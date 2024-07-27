@@ -100,8 +100,8 @@ CheckOptions:
   readability-identifier-naming.StructCase: 'lower_case'
   readability-identifier-naming.TemplateParameterCase: 'lower_case'
   readability-identifier-naming.TemplateParameterSuffix: '_t'
-  readability-identifier-naming.TemplateTemplateParameterCase: true
-  readability-identifier-naming.TemplateTemplateParameterSuffix: true
+  readability-identifier-naming.TemplateTemplateParameterCase: 'lower_case'
+  readability-identifier-naming.TemplateTemplateParameterSuffix: '_t'
   readability-identifier-naming.TypeAliasCase: 'lower_case'
   readability-identifier-naming.TypeAliasSuffix: '_t'
   readability-identifier-naming.TypedefCase: 'lower_case'
