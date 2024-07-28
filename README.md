@@ -27,9 +27,9 @@
 
 Don't align anything except the following:
 
- - If arguments/parameters doesn't fit in a line,
-   break after open brackets and place the closing bracket to a new line.
- 
+ - If arguments/parameters doesn't fit in a line:
+   - Break after open brackets and place the closing bracket to a new line.
+   - Place each arugment/parameter in a separated line.
  ```cpp
  void int foo(
      unsigned int value_one,
