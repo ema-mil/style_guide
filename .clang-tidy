@@ -53,7 +53,12 @@ Checks: "clang-diagnostic-*,
          -llvm-header-guard,
          -readability-identifier-length,
          -readability-magic-numbers,
-         -readability-uppercase-literal-suffix
+         -readability-uppercase-literal-suffix,
+         -cert-dcl16-c,
+         -hicpp-uppercase-literal-suffix,
+         -cppcoreguidelines-non-private-member-variables-in-classes,
+         -hicpp-use-auto,
+         -cppcoreguidelines-avoid-magic-numbers
          "
 CheckOptions:
   cppcoreguidelines-pro-type-const-cast.StrictMode: true
