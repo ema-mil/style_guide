@@ -152,7 +152,7 @@ IntegerLiteralSeparator:
   HexMinDigits: 0
 KeepEmptyLinesAtTheStartOfBlocks: false
 KeepEmptyLinesAtEOF: false
-LambdaBodyIndentation: OuterScope
+LambdaBodyIndentation: Signature
 LineEnding: DeriveLF
 MacroBlockBegin: ''
 MacroBlockEnd: ''
