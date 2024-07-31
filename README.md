@@ -65,13 +65,15 @@ Don't align anything except the following:
          + ccccccccccccccc;
  ```
 
- - Align lambdas scope relative to the indentation of the outer scope:
+ - Align lambda body relative to the lambda signature: 
 
  ```cpp
- someMethod([]()
- {
-   return;
- });
+ some_function_call(
+     []()
+     {
+         // Code...
+     }
+ );
  ```
 
  - Align pointers and references to the left:
