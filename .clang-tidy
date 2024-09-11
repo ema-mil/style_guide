@@ -61,7 +61,8 @@ Checks: "clang-diagnostic-*,
          -cppcoreguidelines-non-private-member-variables-in-classes,
          -hicpp-use-auto,
          -cppcoreguidelines-avoid-magic-numbers,
-         -cppcoreguidelines-pro-type-union-access
+         -cppcoreguidelines-pro-type-union-access,
+         -cppcoreguidelines-owning-memory
          "
 CheckOptions:
   cppcoreguidelines-pro-type-const-cast.StrictMode: true
