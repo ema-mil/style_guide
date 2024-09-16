@@ -66,7 +66,7 @@ Checks: "clang-diagnostic-*,
          "
 CheckOptions:
   cppcoreguidelines-pro-type-const-cast.StrictMode: true
-  misc-include-cleaner.IgnoreHeaders: '.*pch\.h;.*stdafx\.h'
+  misc-include-cleaner.IgnoreHeaders: '^.*(?:pch|stdafx)\.h\w*$'
   modernize-use-default-member-init.UseAssignment: true
   performance-for-range-copy.WarnOnAllAutoCopies: true
   readability-identifier-naming.AbstractClassCase: 'lower_case'
