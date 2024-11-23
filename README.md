@@ -3,127 +3,145 @@
 # Style Guide
 
 ## Contents
- 
- - [Formatting](#formatting)
-    - [Alignment](#alignment)
-    - [Brackets](#brackets)
-    - [Characters Per Line](#characters-per-line)
-    - [Const](#const)
-    - [Empty Lines](#empty-lines)
-    - [Indentation](#indentation)
-    - [Namespaces](#namespaces)
-    - [Single Line Rules](#single-line-rules)
-    - [Spaces](#spaces)
-    - [Templates](#templates)
- - [Naming](#naming)
-    - [Case](#case)
-    - [Prefix](#prefix)
-    - [Suffix](#suffix)
- - [Best Practices](#best-practices)
 
-## Formating
+- [Formatting](#formatting)
+  - [Alignment](#alignment)
+  - [Brackets](#brackets)
+  - [Characters Per Line](#characters-per-line)
+  - [Const](#const)
+  - [Empty Lines](#empty-lines)
+  - [Indentation](#indentation)
+  - [Namespaces](#namespaces)
+  - [Single Line Rules](#single-line-rules)
+  - [Spaces](#spaces)
+  - [Templates](#templates)
+- [Naming](#naming)
+  - [Case](#case)
+  - [Prefix](#prefix)
+  - [Suffix](#suffix)
+- [Best Practices](#best-practices)
+
+## Formatting
 
 ### Alignment
 
-Don't align anything except the following:
+Always break curly brackets:
 
- - If arguments/parameters doesn't fit in a line:
-   - Break after open brackets and place the closing bracket to a new line.
-   - Place each arugment/parameter in a separated line.
- ```cpp
- void int foo(
-     unsigned int value_one,
-     unsigned int value_two,
-     unsigned int value_three
- )
- {
-    // Code...
- }
- 
- foo(
-     value_one,
-     value_two,
-     value_three
- );
- ```
+```cpp
+// Good
+void foo()
+{
+    int number = 10;
 
- - Align array of structures to the left:
+    if (number == 5)
+    {
+        return;
+    }
+}
 
- ```cpp
- std::array<my_struct, 3> list =
- {
-     {56, 23,    "hello"},
-     {-1, 93463, "world"},
-     {7,  5,     "!!"   }
- };
- ```
+// Bad
+void foo() {
+    int number = 10;
 
- - Align operands:
+    if (number == 5) {
+        return;
+    }
+}
+```
 
- ```cpp
- int aaa = bbbbbbbbbbbbbbb
-         + ccccccccccccccc;
- ```
+If the code inside round brackets doesn't fit in a line, break each argument/parameter onto a new line and break the closing bracket.
 
- - Align lambda body relative to the lambda signature: 
+```cpp
+void function_one( // Doesn't fit in a line, break
+    unsigned int value_one,
+    unsigned int value_two,
+    unsigned int value_three
+)
+{
+}
 
- ```cpp
- some_function_call(
-     []()
-     {
-         // Code...
-     }
- );
- ```
+void function_two(unsigned int value) // Fits in a line, don't break
+{
+}
 
- - Align pointers and references to the left:
+int main()
+{
+    const unsigned int very_long_variable_name1 = 1;
+    const unsigned int very_long_variable_name2 = 2;
+    const unsigned int very_long_variable_name3 = 3;
 
- ```cpp
- // Good
- int* ptr_one;
- int& ref_one;
+    function_one( // Doesn't fit in a line, break
+        very_long_variable_name1,
+        very_long_variable_name2,
+        very_long_variable_name3
+    );
 
- // Bad: Aligned to the right
- int *ptr_two;
- int &ref_two;
- ```
+    const unsigned int value = 10;
 
- - Align initializer list comma to the left:
+    function_two(value); // Fits in a line, don't break
+}
+```
 
- ```cpp
- constructor()
+Align operands:
+
+```cpp
+int aaa = bbbbbbbbbbbbbbb
+        + ccccccccccccccc;
+```
+
+Align lambda body relative to the lambda signature:
+
+```cpp
+some_function_call(
+    []()
+    {
+        // Code...
+    }
+);
+```
+
+Align pointers and references to the left:
+
+```cpp
+// Good
+int* ptr_one;
+int& ref_one;
+
+// Bad: Aligned to the right
+int *ptr_two;
+int &ref_two;
+```
+
+Align initializer list commas to the left:
+
+```cpp
+constructor()
     : initializer1()
     , initializer2()
- ```
+{
+    // Code...
+}
+```
 
- - Align inheritence list comma to the left:
+Align inheritance list commas to the left:
 
- ```cpp
- class foo
+```cpp
+class foo
     : base1
     , base2
- {
-
- }
- ```
+{
+    // Code...
+}
+```
 
 ### Brackets
 
 Always use brackets, even for short statements.
 
-Always break before brackets.
-
-Example:
-
 ```cpp
 // Good
 for (std::size_t i = 0; i < 100; ++i)
 {
-    std::cout << i << '\n';
-}
-
-// Bad: No break before brackets
-for (std::size_t i = 0; i < 100; ++i) {
     std::cout << i << '\n';
 }
 
@@ -136,50 +154,277 @@ for (std::size_t i = 0; i < 100; ++i)
 
 Each line must have a maximum of `80` characters.
 
+```cpp
+int main()
+{
+    int very_long_variable_name1 = 1;
+    int very_long_variable_name2 = 1;
+    int very_long_variable_name3 = 1;
+    
+    // Good, no more than 80 characters per line
+    int result = very_long_variable_name1 
+               + very_long_variable_name2 
+               + very_long_variable_name3;
+}
+```
+
 ### Const
 
-Put const when you can except for member variables and copy parameters.
+Use `const` when possible, except for:
+- Member variables
+- Copy parameters
+- Copy return types
 
-### Empty lines
+```cpp
+class foo
+{
+public:
+    std::vector<int> ex_ret_type() // Good
+    {
+    }
 
-Max empty line to keep: `1`
+    const std::vector<int> ex_ret_type() // Bad
+    {
+    }
+
+    void ex_parameter(std::vector<int> list) // Good
+    {
+    }
+
+    void ex_parameter(const std::vector<int> list) // Bad
+    {
+    }
+
+private:
+    std::vector<int> m_list; // Good
+
+    const std::vector<int> m_list; // Bad
+};
+
+int main()
+{
+    // Good
+    const int variable1 = 3;
+
+    // Bad
+    int variable2 = 6;
+}
+```
+
+### Empty Lines
+
+Maximum empty lines to keep: `1`.
+
+```cpp
+int main()
+{
+    // Good
+    int my_variable1;
+
+    int my_variable2;
+    // ...
+
+    // Bad
+    int my_variable3;
+
+
+    int my_variable4;
+    // ...
+}
+```
 
 ### Indentation
 
-Use `4` spaces for indenting your code.
+Don't use tabs; use `4` spaces for indenting your code.
 
-Don't use tabs.
+```cpp
+int main()
+{
+    int random_variable = 10;
 
-Don't indent pre processor directives.
+    if (random_variable)
+    {
+        return 0;
+    }
+}
+```
 
-Don't indent `public`, `protected` and `private` keywords.
+Don't indent pre-processor directives.
 
-Don't indent `case` keyword.
+```cpp
+// Good
+#if FOO
+#if BAR
+#include <foo>
+#endif
+#endif
+
+// Bad
+#if FOO
+  #if BAR
+    #include <foo>
+  #endif
+#endif
+```
+
+Don't indent `public`, `protected`, and `private` keywords.
+
+```cpp
+// Good
+class foo
+{
+public:
+    // Code...
+
+protected:
+    // Code...
+
+private:
+    // Code...
+};
+
+// Bad
+class foo
+{
+    public:
+        // Code...
+
+    protected:
+        // Code...
+
+    private:
+        // Code...
+};
+```
+
+Don't indent `case` and `default` keywords.
+
+```cpp
+int main()
+{
+    int random_variable = 10;
+
+    // Good
+    switch (random_variable)
+    {
+    case 1:
+        // Code...
+        break;
+    default:
+        // Code...
+        break;
+    }
+
+    // Bad
+    switch (random_variable)
+    {
+        case 1:
+            // Code...
+            break;
+        default:
+            // Code...
+            break;
+    }
+}
+```
 
 ### Namespaces
 
 Don't indent namespaces.
 
-If a namespaces have more then one line:
+If a namespace has more than one line, place a comment with the name of the namespace at the end of its closing brackets.
 
-Place a comment with the name of namespace at the end of its brackets.
+```cpp
+namespace foo
+{
 
-### Single Lines Rules
+void my_function();
 
-Never put everything into a single line except:
+void my_function_two();
 
- - Short compound requirement
- - Short lambdas
+} // namespace foo
+```
 
-### Spaces 
+### Single Line Rules
 
-Put a space between `for`, `if`, `else if`, `while` keywords and open brackets.
+Never put anything into a single line except:
+- Short compound requirements
+- Short lambdas
 
-Put a space after C style casts.
+```cpp
+// Good
+template <typename data_t>
+concept my_concept = requires(data_t value)
+{
+    { value + 1 } -> std::same_as<int>;
+};
 
-### Templates
+void empty_function() {} // Bad
 
-Always use concepts in templates when you can.
+// Good
+void empty_function()
+{
+}
+
+int main()
+{
+    int random_variable = 10;
+
+    // Bad
+    if (random_variable == 1) { return; }
+
+    // Good
+    if (random_variable == 1)
+    {
+        return;
+    }
+
+    // Good
+    auto lambda1 = [](int parameter) { return parameter; };
+
+    // Bad, not short
+    auto lambda2 = [](int parameter) { return parameter < 0 ? -parameter : parameter; };
+}
+```
+
+### Spaces
+
+Put a space between `for`, `if`, `else if`, and `while` keywords and open brackets.
+
+```cpp
+int main()
+{
+    // Bad
+    for(int i = 0; i < 100; ++i)
+    {
+    }
+
+    // Good
+    for (int i = 0; i < 100; ++i)
+    {
+    }
+
+    // Bad
+    while(some_variable)
+    {
+    }
+
+    // Goood
+    while (some_variable)
+    {
+    }
+
+    // Bad
+    if(some_variable)
+    {
+    }
+
+    // Good
+    if (some_variable)
+    {
+    }
+}
+```
 
 ## Naming
 
@@ -187,26 +432,96 @@ Always use concepts in templates when you can.
 
 Use `underscore_style` everywhere except for macros.
 
-For macros use `UPPER_CASE`.
+```cpp
+class random_name // Good
+{
+};
+
+class RandomName // Bad
+{
+};
+
+int main()
+{
+    int myVariable; // Bad
+
+    int my_variable; // Good
+
+    random_name myObject; // Bad
+
+    random_name my_object; // Good
+}
+```
+
+For macros, use `UPPER_CASE`.
+
+```cpp
+#define my_macro // Bad
+
+#define MY_MACRO // Good
+```
 
 ### Prefix
 
-Put `m_` as prefix in all non public member variables.
+Put `m_` as a prefix in all non-public member variables.
 
-### Suffix 
+```cpp
+class foo
+{
+public:
+    int member_variable; // Good, no need to put m_ since it is public
 
-Put `_t` as suffix for all defined types.
+    int m_member_variable; // Bad, the variable is public
 
-Defines types are types defined with:
- - `typename` keyword.
- - `using` keyword.
- - `typedef` keyword.
- 
-## Best practices:
+private:
+    int m_member_variable; // Good, the variable is private; m_ is needed 
 
-Raccomented best practices:
+    int member_variable; // Bad, the variable needs m_ since it's private
+
+protected:
+    int m_member_variable; // Good, the variable is protected; m_ is needed 
+
+    int member_variable; // Bad, the variable needs m_ since it's protected
+};
+```
+
+### Suffix
+
+Put `_t` as a suffix for all defined types.
+
+Defined types are types defined with:
+- `typename` keyword.
+- `using` keyword.
+- `typedef` keyword.
+
+```cpp
+using custom_type = std::int16_t; // Bad, didn't add _t suffix
+
+using custom_type_t = std::int16_t; // Good, added _t suffix
+
+typedef std::int16_t custom_type; // Bad, didn't add _t suffix
+
+typedef std::int16_t custom_type_t; // Good, added _t suffix
+
+template<typename T> // Bad, didn't add _t suffix
+
+
+void foo(const T& data)
+{
+
+}
+
+template<typename data_t> // Good, added _t suffix
+void foo(const data_t& data)
+{
+
+}
+```
+
+## Best Practices
+
+Recommended best practices:
 
 [Jason Turner Best Practices](https://github.com/cpp-best-practices/cppbestpractices)
 
 [C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines)
-
